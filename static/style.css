@@ -48,6 +48,18 @@ body {
 	padding-top: 0.25rem;
 	font-size: 1rem;
 }
+.module.twovalues .bar {
+    display: inline-block;
+    height: 0.5rem;
+    width: 7.86rem;
+    margin-top: 0.7rem;
+    padding: 0.07rem;
+	outline: 1px solid #606060;
+}
+.module.twovalues .bar .progress {
+    background-color: #bb4040;
+    height: 100%;
+}
 #heartbeat {
 	width: 5.5rem;
 	height: 5.5rem;

@@ -62,6 +62,7 @@
 	h.diskusage = function(n) {
 		$('#disku').text(u.bytes(n[0], 1));
 		$('#diskt').text(u.bytes(n[1], 1));
+		$('#diskbar').width((100 / n[1] * n[0]) + '%');
 	};
 	h.netio = function(n) {
 		$('#nett').text(u.bytes(n[0], 1));
@@ -88,7 +89,7 @@
 	function ping() {
 		var time = +new Date;
 		heartbeaton();
-		$.get('raw', function(data) {
+		$.get(document.location.href + '/raw', function(data) {
 			document.title = data.fqdn;
 			for (var i in data)
 				h[i] && h[i](data[i]);
