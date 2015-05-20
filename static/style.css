@@ -49,15 +49,27 @@ body {
 	font-size: 1rem;
 }
 .module.twovalues .bar {
+    position: absolute;
     display: inline-block;
-    height: 0.5rem;
+    height: 0.3rem;
     width: 7.86rem;
-    margin-top: 0.7rem;
+    margin-top: 4.5rem;
     padding: 0.07rem;
-	outline: 1px solid #606060;
+    outline: 1px solid #606060;
 }
 .module.twovalues .bar .progress {
-    background-color: #bb4040;
+    background-color: #aa2020;
+    height: 100%;
+}
+.module.twovalues.alt .bar {
+    position: absolute;
+    display: block;
+    height: inherit;
+    width: inherit;
+    z-index: -10;
+}
+.module.twovalues.alt .bar .progress {
+    background-color: #542020;
     height: 100%;
 }
 #heartbeat {
