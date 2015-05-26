@@ -82,6 +82,14 @@
 		$('#swapusage').text(u.bytes(n[1]));
 		g.swapusage.t.append(+new Date, n[3]);
 	};
+	h.updates = function(n) {
+		$('#upd_a').text('Available: ' + n[0]);
+		$('#upd_s').text('Security: ' + n[1]);
+	};
+	h.reboot = function(n) {
+	    if (n == true)
+    		$('#reboot').text("&#x21bb;");
+	};
 	var count = 0, errors = 0;
 	var latency = 0;
 	var wait = 1000;

@@ -7,6 +7,7 @@ from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
 from multiprocessing import Process, Manager
+import platform, subprocess
 
 if getattr(sys, 'frozen', None):
 	static = os.path.join(sys._MEIPASS, 'static')
@@ -25,6 +26,24 @@ def raw():
 		json.dumps(stats.copy()),
 		mimetype='application/json'
 	)
+
+def get_num_updates():
+    avail = 0
+    security = 0
+    if platform.linux_distribution()[0] == 'Ubuntu':
+        out = subprocess.check_output("/usr/lib/update-notifier/update-motd-updates-available", stderr=subprocess.STDOUT)
+        out = out.strip().splitlines()
+        if len(out) > 1:
+            avail = int(out[0].split()[0])
+            security = int(out[1].split()[0])
+    return [avail, security]
+
+def get_req_reboot():
+    if platform.linux_distribution()[0] == 'Ubuntu':
+        out = subprocess.check_output("/usr/lib/update-notifier/update-motd-reboot-required", stderr=subprocess.STDOUT)
+        if out.strip() == "":
+            return True
+    return False
 
 def update(stats):
 	while True:
@@ -45,8 +64,10 @@ def update(stats):
 		stats['diskusage'] = [diskused, disktotal]
 		stats['netio'] = psutil.net_io_counters()
 		stats['swapusage'] = psutil.swap_memory()
+		stats['updates'] = get_num_updates()
+		stats['reboot'] = get_req_reboot()
 		time.sleep(1)
-
+		
 if __name__ == '__main__':
 	stats = Manager().dict()
 	Process(target=update, args=(stats, )).start()
