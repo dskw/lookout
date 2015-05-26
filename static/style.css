@@ -4,7 +4,7 @@ body {
 	position: relative;
 	background: #202020;
 	color: #c0c0c0;
-	font-family: sans-serif;
+	font-family: 'Segoe UI', sans-serif;
 }
 .module {
 	display: inline-block;
@@ -93,12 +93,15 @@ body {
 	font-size: 2em;
 	padding: 0.25em;
 }
-#reboot {
-	text-align: left;
-	font-size: 2em;
-	padding: 0.25em;
-}
 #uptime {
 	font-family: 'Consolas', monospace;
 	padding-top: 0;
+}
+#reboot {
+    position: absolute;
+	text-align: left;
+	font-size: 1em;
+	padding: 0.25em;
+	left: 10rem;
+	top: 2.5rem;
 }
