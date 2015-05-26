@@ -88,7 +88,7 @@
 	};
 	h.reboot = function(n) {
 	    if (n == 1)
-    		$('#reboot').text("&#x21bb;");
+    		$('#reboot').text("&#8635;");
 	};
 	var count = 0, errors = 0;
 	var latency = 0;
