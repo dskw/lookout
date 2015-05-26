@@ -87,7 +87,7 @@
 		$('#upd_s').text('Security: ' + n[1]);
 	};
 	h.reboot = function(n) {
-	    if (n == true)
+	    if (n == 1)
     		$('#reboot').text("&#x21bb;");
 	};
 	var count = 0, errors = 0;

@@ -42,8 +42,8 @@ def get_req_reboot():
     if platform.linux_distribution()[0] == 'Ubuntu':
         out = subprocess.check_output("/usr/lib/update-notifier/update-motd-reboot-required", stderr=subprocess.STDOUT)
         if out.strip() == "":
-            return True
-    return False
+            return 1
+    return 0
 
 def update(stats):
 	while True:
