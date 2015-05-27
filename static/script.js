@@ -87,7 +87,7 @@
 		$('#upd_s').text('Security: ' + n[1]);
 	};
 	h.reboot = function(n) {
-		$('#reboot').css("visibility", (n == 0) ? "visible" : "hidden");
+		$('#reboot').css("visibility", (n == 1) ? "visible" : "hidden");
 	};
 	var count = 0, errors = 0;
 	var latency = 0;
